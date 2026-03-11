@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rayeva WhatsApp Bot Architecture</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 2rem auto; max-width: 900px; line-height: 1.5; }
+      code { background: #f4f4f4; padding: 0.2rem 0.4rem; }
+      pre { background: #f6f8fa; padding: 1rem; overflow-x: auto; }
+    </style>
+  </head>
+  <body>
+    <h1>Rayeva AI WhatsApp Support Bot</h1>
+    <p>This static page is published via GitHub Pages for architecture visibility.</p>
+
+    <h2>Architecture</h2>
+    <pre>WhatsApp Cloud API -> Webhook Receiver -> BullMQ Queue -> Message Processor
+                                |                    |-> Intent Classification
+                                |                    |-> Business Rules (orders/policies)
+                                |                    |-> AI Decision Engine (structured JSON)
+                                |                    |-> Escalation Service
+                                -> PostgreSQL Logs + Redis Context + WhatsApp Response</pre>
+
+    <h2>Structured AI Output Contract</h2>
+    <p>All model responses are validated against:</p>
+    <pre>{
+  "customer_message": "string",
+  "confidence": 0.0,
+  "requires_escalation": false,
+  "escalation_reason": null,
+  "follow_up_question": null,
+  "cited_facts": []
+}</pre>
+
+    <h2>Deployment Notes</h2>
+    <ul>
+      <li>Backend deploy target: Render/Railway/Fly/VM/container host.</li>
+      <li>GitHub Pages deploy target: this architecture site in <code>/docs</code>.</li>
+    </ul>
+  </body>
+</html>

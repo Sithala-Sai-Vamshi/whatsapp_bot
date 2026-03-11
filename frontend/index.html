@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rayeva WhatsApp Support Bot - Frontend</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Rayeva WhatsApp Support Bot</h1>
+      <p class="subtitle">Simple frontend for architecture and API quick checks.</p>
+
+      <section class="card">
+        <h2>System Overview</h2>
+        <ul>
+          <li>Webhook Receiver: <code>/webhooks/whatsapp</code></li>
+          <li>Health Check: <code>/health</code></li>
+          <li>Queue Worker: BullMQ + Redis</li>
+          <li>Database: PostgreSQL</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>API Health Check</h2>
+        <label for="apiBase">Backend URL</label>
+        <input id="apiBase" value="http://localhost:3000" />
+        <button id="healthBtn">Check Health</button>
+        <p id="healthResult">Not checked yet.</p>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

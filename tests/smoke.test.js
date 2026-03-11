@@ -15,9 +15,18 @@ test('schema contains required tables', () => {
   }
 });
 
+
+test('github pages artifacts and workflow hardening exist', () => {
+  assert.equal(fs.existsSync('docs/index.html'), true);
+  const workflow = fs.readFileSync('.github/workflows/pages.yml', 'utf8');
+  assert.match(workflow, /FORCE_JAVASCRIPT_ACTIONS_TO_NODE24/);
+  assert.match(workflow, /enablement:\s*true/);
+  assert.match(workflow, /actions\/checkout@v5/);
+=======
 test('github pages artifacts exist', () => {
   assert.equal(fs.existsSync('docs/index.html'), true);
   assert.equal(fs.existsSync('.github/workflows/pages.yml'), true);
+
 });
 
 test('structured ai output contract is defined', () => {

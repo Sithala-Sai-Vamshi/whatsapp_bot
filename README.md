@@ -58,6 +58,8 @@ Deploy the Node.js service to any container host (Render, Railway, Fly.io, VM, E
 ### GitHub Pages (Architecture Site)
 A static architecture page is included in `docs/index.html` and auto-deployed by `.github/workflows/pages.yml`.
 
+If Pages has never been enabled on the repository, the workflow now auto-attempts enablement (`enablement: true`) before deployment.
+
 ## Database
 Run `sql/schema.sql` on PostgreSQL (auto-mounted in docker-compose).
 

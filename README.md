@@ -9,6 +9,7 @@ Production-oriented TypeScript service for WhatsApp Business Cloud API support a
 - Real PostgreSQL integration for orders, conversations, messages, escalations, and AI logs.
 - Redis-backed context memory + BullMQ async processing.
 - Prompt/response logging and escalation audit trail.
+
 - Lightweight frontend in `frontend/` for quick architecture + API health checks.
 
 ## Architecture
@@ -38,6 +39,7 @@ Data Stores:
    docker compose up -d postgres redis
    ```
 3. Install dependencies and run backend:
+3. Install dependencies and run:
    ```bash
    npm install
    npm run dev
@@ -47,6 +49,7 @@ Data Stores:
    python3 -m http.server 8080
    # then open http://localhost:8080/frontend/index.html
    ```
+
 
 ## Webhooks
 - Verify endpoint: `GET /webhooks/whatsapp`
@@ -66,3 +69,15 @@ Commit and host `frontend/` files in your GitHub repository (or any static host)
 
 ## Database
 Run `sql/schema.sql` on PostgreSQL (auto-mounted in docker-compose).
+### GitHub Pages (Architecture Site)
+A static architecture page is included in `docs/index.html` and auto-deployed by `.github/workflows/pages.yml`.
+
+If Pages has never been enabled on the repository, the workflow now auto-attempts enablement (`enablement: true`) before deployment.
+
+## Database
+Run `sql/schema.sql` on PostgreSQL (auto-mounted in docker-compose).
+
+## Metrics Alignment
+- Fast response path with queue worker + Redis context.
+- Full interaction logging (`whatsapp_conversations`, `whatsapp_messages`, `whatsapp_ai_logs`).
+- Structured escalation records in `escalations`.

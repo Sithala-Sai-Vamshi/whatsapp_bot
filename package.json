@@ -1,0 +1,37 @@
+{
+  "name": "rayeva-whatsapp-support-bot",
+  "version": "1.0.0",
+  "description": "AI WhatsApp support bot for sustainable commerce order and policy support",
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx watch src/server.ts",
+    "start": "node dist/server.js",
+    "test": "node --test tests/**/*.test.js",
+    "lint": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "axios": "^1.8.0",
+    "bullmq": "^5.40.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "ioredis": "^5.4.2",
+    "openai": "^4.79.4",
+    "pg": "^8.13.1",
+    "pino": "^9.6.0",
+    "pino-http": "^10.3.0",
+    "uuid": "^11.0.5",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.5",
+    "@types/pg": "^8.11.11",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

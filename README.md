@@ -10,6 +10,8 @@ Production-oriented TypeScript service for WhatsApp Business Cloud API support a
 - Redis-backed context memory + BullMQ async processing.
 - Prompt/response logging and escalation audit trail.
 
+- Lightweight frontend in `frontend/` for quick architecture + API health checks.
+
 ## Architecture
 ```text
 WhatsApp Cloud API
@@ -36,11 +38,18 @@ Data Stores:
    ```bash
    docker compose up -d postgres redis
    ```
+3. Install dependencies and run backend:
 3. Install dependencies and run:
    ```bash
    npm install
    npm run dev
    ```
+4. Open frontend locally:
+   ```bash
+   python3 -m http.server 8080
+   # then open http://localhost:8080/frontend/index.html
+   ```
+
 
 ## Webhooks
 - Verify endpoint: `GET /webhooks/whatsapp`
@@ -55,6 +64,11 @@ ngrok http 3000
 ### Backend service
 Deploy the Node.js service to any container host (Render, Railway, Fly.io, VM, ECS, etc.).
 
+### Frontend files
+Commit and host `frontend/` files in your GitHub repository (or any static host).
+
+## Database
+Run `sql/schema.sql` on PostgreSQL (auto-mounted in docker-compose).
 ### GitHub Pages (Architecture Site)
 A static architecture page is included in `docs/index.html` and auto-deployed by `.github/workflows/pages.yml`.
 
